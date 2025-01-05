@@ -5,14 +5,14 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cam0studios/library.git"
+    "url": "git+https://github.com/cam0studios/vector-library.git"
   },
   "main": "main.js",
   "bugs": {
-    "url": "https://github.com/cam0studios/library/issues"
+    "url": "https://github.com/cam0studios/vector-library/issues"
   },
   "description": "A vector library for games or other projects",
-  "homepage": "https://github.com/cam0studios/library#readme",
+  "homepage": "https://github.com/cam0studios/vector-library#readme",
   "keywords": [
     "math",
     "vector",
