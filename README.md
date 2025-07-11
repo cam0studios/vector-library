@@ -4,7 +4,7 @@ A vector library for games, physics, etc
 ## Usage
 To install:
 ```bash
-npm i @cam0studios/vector-library
+bun i @cam0studios/vector-library
 ```
 To import:
 ```js

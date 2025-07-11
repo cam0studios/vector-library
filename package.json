@@ -1,22 +1,31 @@
 {
-  "name": "@cam0studios/vector-library",
-  "version": "1.2.0",
-  "author": "cam0studios",
-  "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cam0studios/vector-library.git"
-  },
-  "main": "main.js",
-  "bugs": {
-    "url": "https://github.com/cam0studios/vector-library/issues"
-  },
-  "description": "A vector library for games or other projects",
-  "homepage": "https://github.com/cam0studios/vector-library#readme",
-  "keywords": [
-    "math",
-    "vector",
-    "physics"
-  ],
-  "license": "ISC"
+	"name": "@cam0studios/vector-library",
+	"version": "2.0.1",
+	"author": "cam0studios",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cam0studios/vector-library.git"
+	},
+	"main": "main.ts",
+	"bugs": {
+		"url": "https://github.com/cam0studios/vector-library/issues"
+	},
+	"description": "A vector library for games or other projects",
+	"homepage": "https://github.com/cam0studios/vector-library#readme",
+	"keywords": [
+		"math",
+		"vector",
+		"physics"
+	],
+	"license": "ISC",
+	"scripts": {
+		"test": "jest"
+	},
+	"devDependencies": {
+		"@types/jest": "^30.0.0",
+		"jest": "^30.0.0",
+		"ts-jest": "^29.4.0",
+		"typescript": "^5.8.3"
+	}
 }
