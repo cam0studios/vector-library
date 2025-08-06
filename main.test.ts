@@ -108,6 +108,12 @@ test("set components", () => {
     b.set(3, 4);
     expect(b).toEqual(new Vector(3, 4));
 });
+test("set array", () => {
+    let a = new Vector(1, 2);
+    let b = a.copy;
+    b.set([3, 4]);
+    expect(b).toEqual(new Vector(3, 4));
+});
 
 test("rotate 2D", () => {
     let a = new Vector(2, 1);
@@ -216,6 +222,15 @@ test("lerp", () => {
     let c = a.lerp(b, 0.5);
     expect(c).toEqual(new Vector(2, 3));
     expect(c).toEqual(Vector.lerp(a, b, 0.5));
+});
+
+test("apply", () => {
+    let a = new Vector(1, 2, 3);
+    let b = a.copy;
+    let f = (n: number) => n + 2;
+    b.apply(f);
+    expect(b).toEqual(new Vector(3, 4, 5));
+    expect(b).toEqual(Vector.apply(a, f));
 });
 
 test("swizzles", () => {

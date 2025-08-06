@@ -160,16 +160,27 @@ export default class Vector {
 	 * @example
 	 * let a = new Vector(1, 2);
 	 * a.set(3, 4);
+	 * @example
+	 * let a = new Vector(1, 2);
+	 * a.set([3, 4])
 	 */
 	set(v: Vector): Vector;
+	set(arr: number[]): Vector;
 	set(x: number, y: number): Vector;
 	set(x: number, y: number, z: number): Vector;
-	set(v: Vector | number, y?: number, z?: number): Vector {
+	set(v: Vector | number | number[], y?: number, z?: number): Vector {
 		if (v instanceof Vector) {
 			this.x = v.x;
 			this.y = v.y;
 			if (this.dims === 3 && v.dims === 3) {
 				this.z = v.z;
+			}
+		} else if (Array.isArray(v)) {
+			if (v.length < 2) return this;
+			this.x = v[0];
+			this.y = v[1];
+			if (this.dims === 3 && 2 in v) {
+				this.z = v[2];
 			}
 		} else if (typeof y === "number") {
 			this.x = v;
@@ -498,6 +509,20 @@ export default class Vector {
 	}
 
 	/**
+	 * Apply a function to each component
+	 * @example
+	 * let v = new Vector(1, 2, 3);
+	 * v.apply((n) => n + 1);
+	 */
+	apply(func: (comp: number) => number): Vector {
+		let comps = [this.x, this.y];
+		if (this.dims === 3) {
+			comps.push(this.z);
+		}
+		return this.set(comps.map(func));
+	}
+
+	/**
 	 * Get the 2D vector (x, y) of this vector
 	 * @example
 	 * let a = new Vector(1, 2, 3);
@@ -769,6 +794,10 @@ export default class Vector {
 		return v1.lerp(v2, t);
 	}
 
+	static apply(v: Vector, func: (n: number) => number) {
+		return v.copy.apply(func);
+	}
+
 	/**
 	 * Gets a vector normalized
 	 * @example
@@ -911,8 +940,11 @@ export default class Vector {
 	"="(x: number, y: number): Vector;
 	"="(x: number, y: number, z: number): Vector;
 	"="(v: Vector): Vector;
-	"="(v: Vector | number, y?: number, z?: number): Vector {
+	"="(arr: number[]): Vector;
+	"="(v: Vector | number | number[], y?: number, z?: number): Vector {
 		if (v instanceof Vector) {
+			this.set(v);
+		} else if (Array.isArray(v)) {
 			this.set(v);
 		} else if (typeof y === "number") {
 			if (typeof z === "number") {
